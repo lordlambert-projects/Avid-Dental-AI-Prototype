@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Avid Dental AI Prototype</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <!-- WELCOME -->
+    <section class="scr on" id="welcome">
+      <div class="fade"><div class="brand">AVID DENTAL CLINIC</div></div>
+      <div class="fade" style="width: 110px"><div id="prevOrb"></div></div>
+      <h1 class="fade">Welcome to Avid Dental Clinic’s AI Experience.</h1>
+      <p class="fade disc">
+        Choose how you’d like to continue. <br /><small
+          >Care • Comfort • Confidence</small
+        >
+      </p>
+      <div class="row fade">
+        <button class="btn" id="goWeb">Go to Website</button
+        ><button class="btn pri" id="goAI">Explore AI</button>
+      </div>
+    </section>
+    <section class="scr" id="avatars">
+      <h1>Choose your avatar</h1>
+      <p class="disc">
+        Pick who represents you. You can change it any time by tapping your
+        avatar.
+      </p>
+      <div class="row" id="avRow"></div>
+      <div class="row">
+        <button class="btn pri" id="avGo" disabled>Continue</button
+        ><button class="btn" id="avSkip">Skip</button>
+      </div>
+    </section>
+    <section class="scr" id="naming">
+      <h1>What should I call you?</h1>
+      <p class="disc">
+        Give your avatar a name. Your AI assistant will use it when speaking
+        with you.
+      </p>
+      <div class="av u big3" id="nameAv"></div>
+      <input
+        id="nameIn"
+        class="nameIn"
+        maxlength="20"
+        placeholder="e.g. Lambert"
+        autocomplete="off"
+        aria-label="Your name"
+      /><label class="disc"
+        ><input type="checkbox" id="remember" /> Remember my choice on this
+        device</label
+      >
+      <div class="row">
+        <button class="btn" id="nameBack">Back</button
+        ><button class="btn pri" id="nameGo">Continue</button
+        ><button class="btn" id="nameSkip">Skip</button>
+      </div>
+    </section>
+    <!-- WEBSITE NOTICE -->
+    <section class="scr" id="webnote">
+      <h1>Prototype notice</h1>
+      <p class="disc">
+        This is an independent working AI assistant prototype created by Lord
+        Lambert for Avid Dental Clinic. The clinic’s existing website has not
+        yet been integrated into this AI experience. Website navigation and
+        service-page integration can be enabled after the clinic reviews and
+        authorizes the implementation.
+      </p>
+      <div class="row">
+        <button class="btn" id="back1">Back to Welcome</button
+        ><button class="btn pri" id="goAI2">Explore AI</button>
+      </div>
+    </section>
+    <!-- AI -->
+    <div class="orb" id="orb" data-st="ready">
+      <div class="float">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <radialGradient id="g" cx=".35" cy=".25" r=".9">
+              <stop offset="0" stop-color="#fff" />
+              <stop offset=".3" stop-color="#d4e6ff" />
+              <stop offset=".7" stop-color="#5b8fe6" />
+              <stop offset="1" stop-color="#0e2c73" />
+            </radialGradient>
+            <radialGradient id="fg" cx=".5" cy=".3" r=".9">
+              <stop offset="0" stop-color="#16327a" />
+              <stop offset="1" stop-color="#030816" />
+            </radialGradient>
+            <linearGradient id="rm" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#6cb4ff" />
+              <stop offset="1" stop-color="#e5384f" />
+            </linearGradient>
+            <filter id="bl" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2" />
+            </filter>
+          </defs>
+          <ellipse
+            cx="50"
+            cy="98"
+            rx="24"
+            ry="3"
+            fill="#000"
+            opacity=".4"
+            filter="url(#bl)"
+          />
+          <g class="ring">
+            <ellipse
+              cx="50"
+              cy="50"
+              rx="48"
+              ry="16"
+              fill="none"
+              stroke="url(#rm)"
+              stroke-opacity=".7"
+              transform="rotate(-20 50 50)"
+            />
+            <circle cx="96" cy="38" r="3" fill="#e5384f" />
+          </g>
+          <path
+            d="M50 12c-14-8-34-2-34 20 0 14 6 20 8 34 1 10 6 22 12 22s5-12 14-12 8 12 14 12 11-12 12-22c2-14 8-20 8-34 0-22-20-28-34-20z"
+            transform="translate(0 -4) scale(.95) translate(2.6 3)"
+            fill="url(#g)"
+            stroke="url(#rm)"
+            stroke-opacity=".7"
+          />
+          <rect
+            x="23"
+            y="30"
+            width="54"
+            height="34"
+            rx="16"
+            fill="url(#fg)"
+            stroke="#6cb4ff"
+            stroke-opacity=".45"
+          />
+          <ellipse
+            class="eye"
+            cx="39"
+            cy="46"
+            rx="6"
+            ry="8"
+            fill="#6cd0ff"
+            filter="url(#bl)"
+            opacity=".8"
+          />
+          <ellipse
+            class="eye"
+            cx="61"
+            cy="46"
+            rx="6"
+            ry="8"
+            fill="#6cd0ff"
+            filter="url(#bl)"
+            opacity=".8"
+          />
+          <ellipse
+            class="eye"
+            id="eyeL"
+            cx="39"
+            cy="46"
+            rx="4.5"
+            ry="6.5"
+            fill="#bfeaff"
+          />
+          <ellipse
+            class="eye"
+            id="eyeR"
+            cx="61"
+            cy="46"
+            rx="4.5"
+            ry="6.5"
+            fill="#bfeaff"
+          />
+          <ellipse
+            class="mouth"
+            cx="50"
+            cy="58"
+            rx="6"
+            ry="2.4"
+            fill="#bfeaff"
+          />
+          <ellipse
+            cx="36"
+            cy="20"
+            rx="13"
+            ry="5"
+            fill="#fff"
+            opacity=".55"
+            transform="rotate(-22 36 20)"
+          />
+        </svg>
+      </div>
+    </div>
+    <button class="ctl" id="bCall" aria-label="Call AI">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"
+        />
+      </svg>
+    </button>
+    <button class="ctl" id="bMsg" aria-label="Message AI">
+      <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" /></svg>
+    </button>
+    <button id="xBtn" aria-label="Close">✕</button>
+    <div class="ov" id="msgOv">
+      <div class="bubble" id="aiBub" hidden></div>
+      <div class="ubub" id="uBub" hidden></div>
+      <div class="tdots" id="tdots" hidden><i></i><i></i><i></i></div>
+      <div class="chips" id="chips"></div>
+      <button
+        type="button"
+        class="av u mav"
+        id="msgAv"
+        aria-label="Your avatar (tap to change)"
+      ></button>
+      <form class="inbar" id="msgForm">
+        <button
+          type="button"
+          class="av u"
+          id="avM"
+          aria-label="Change avatar"
+        ></button
+        ><input
+          id="msgIn"
+          placeholder="Ask about Avid Dental…"
+          autocomplete="off"
+          aria-label="Message"
+        /><button class="btn pri" style="padding: 8px 18px">Send</button>
+      </form>
+    </div>
+    <div class="ov" id="callOv">
+      <div class="stage">
+        <div class="wave" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div id="stLbl" aria-live="polite">Ready</div>
+        <div id="live"></div>
+        <form class="row" id="callForm">
+          <button type="button" class="btn" id="micBtn">🎙 Mic on</button
+          ><button type="button" class="btn pri" id="respBtn">Respond</button
+          ><button type="button" class="btn" id="stopBtn">✋ Interrupt</button>
+        </form>
+        <form
+          class="inbar"
+          id="fbForm"
+          style="position: static; width: min(92vw, 420px); display: none"
+        >
+          <input
+            id="fbIn"
+            placeholder="Type instead…"
+            aria-label="Type your question"
+          /><button class="btn" style="padding: 6px 14px">Send</button>
+        </form>
+      </div>
+      <div class="uwrap">
+        <button
+          type="button"
+          class="av u big2"
+          id="callAv"
+          aria-label="Your avatar (tap to change)"
+        ></button>
+        <div class="uwave" id="uWave" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <div class="tr" id="tr">
+        <button id="trBtn">
+          <span>Conversation · <span id="trN">0</span> messages</span
+          ><span>▴</span>
+        </button>
+        <div class="body" id="trBody"></div>
+      </div>
+    </div>
+    <div class="cardwrap" id="cardWrap" style="display: none"></div>
+    <button class="gear" id="gear" aria-label="Profile settings">⚙</button>
+    <div class="modal" id="prof">
+      <div>
+        <h3>Your profile</h3>
+        <input
+          id="pName"
+          class="nameIn"
+          maxlength="20"
+          aria-label="Display name"
+          placeholder="Your name"
+        />
+        <div class="row" id="pAv" style="margin: 12px 0"></div>
+        <div class="row">
+          <button class="btn pri" id="pSave">Save</button
+          ><button class="btn" id="pReset">Reset</button
+          ><button class="btn" id="pClose">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="modal">
+      <div>
+        <h3>Website Integration Not Yet Enabled</h3>
+        <p>
+          This is an independent AI demonstration by Lord Lambert. The clinic
+          website has not yet been integrated into this prototype. The AI can
+          already explain Avid Dental’s services, but its embedded website
+          navigation is not yet connected. The clinic can enable this experience
+          after reviewing and authorizing the integration.
+        </p>
+        <button class="btn pri" id="modalOk">Back to AI</button>
+      </div>
+    </div>
+    <div class="tag">
+      Independent prototype · not officially integrated with or endorsed by Avid
+      Dental Clinic
+    </div>
+    <script src="src/main.js"></script>
+  </body>
+</html>
